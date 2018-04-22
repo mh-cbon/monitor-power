@@ -1,0 +1,22 @@
+# see https://github.com/prometheus/prometheus/blob/master/config/testdata/conf.good.yml
+# https://prometheus.io/docs/prometheus/latest/configuration/configuration/#%3Cfile_sd_config%3E
+
+global:
+  scrape_interval:     5s
+  evaluation_interval: 5s
+
+scrape_configs:
+  - job_name: prometheus
+
+    honor_labels: true
+    # scrape_interval is defined by the configured global (15s).
+    # scrape_timeout is defined by the global default (10s).
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+    - targets: ['localhost:9096']
+      labels:
+        my:   label
+        your: label
