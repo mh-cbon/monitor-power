@@ -13,7 +13,10 @@ xdg-open http://localhost:9090/targets
 xdg-open http://localhost:9090/graph?g0.range_input=5m&g0.expr=watts_now&g0.tab=0
 
 # expvar
-expvarmon -ports="9096" -vars="current_now,voltage_now,mem:memstats.Alloc,mem:memstats.Sys,mem:memstats.HeapAlloc,mem:memstats.HeapInuse,duration:memstats.PauseNs,duration:memstats.PauseTotalNs"
+expvarmon -ports="9096" -vars="current_now,voltage_now,watts_now,\
+mem:memstats.Alloc,mem:memstats.Sys\
+,mem:memstats.HeapAlloc,mem:memstats.HeapInuse,\
+duration:memstats.PauseNs,duration:memstats.PauseTotalNs" -i 250ms
 
 # monitor
 go run *.go
